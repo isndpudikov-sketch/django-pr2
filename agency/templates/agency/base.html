@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TravelWorld — Зарубежное представительство{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'agency/css/style.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="{% url 'agency:home' %}" class="logo">✈ TravelWorld</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'agency:home' %}">Главная</a></li>
+                <li class="dropdown">
+                    <a href="{% url 'agency:about' %}">О компании ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'agency:contacts' %}">Контакты</a></li>
+                        <li><a href="{% url 'agency:location' %}">Как нас найти</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'agency:tours' %}">Туры и направления</a></li>
+                <li><a href="{% url 'agency:services' %}">Услуги</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Представительство туристической фирмы «TravelWorld». Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
