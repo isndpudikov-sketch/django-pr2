@@ -126,3 +126,15 @@ body {
     padding: 20px;
     margin-top: auto;
 }
+
+/* Стили для CRUD-страниц и фотографий */
+.btn { display: inline-block; padding: 8px 14px; border-radius: 6px; text-decoration: none; font-size: 0.95rem; cursor: pointer; border: none; margin-right: 6px; margin-top: 6px; }
+.btn-primary { background-color: #2a5298; color: #ffffff; }
+.btn-edit { background-color: #e67e22; color: #ffffff; }
+.btn-delete { background-color: #c0392b; color: #ffffff; }
+.btn-back { background-color: #7f8c8d; color: #ffffff; }
+.item-card { border: 1px solid #dce4ec; border-radius: 8px; padding: 16px; margin-top: 16px; background: #fafbfd; }
+.detail-img { max-width: 450px; width: 100%; height: auto; border-radius: 8px; margin: 15px 0; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.thumb-img { width: 140px; height: 95px; object-fit: cover; border-radius: 6px; margin-top: 8px; display: block; }
+form p { margin-bottom: 12px; }
+form input[type="text"], form input[type="number"], form input[type="email"], form textarea, form select { width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 6px; margin-top: 4px; }

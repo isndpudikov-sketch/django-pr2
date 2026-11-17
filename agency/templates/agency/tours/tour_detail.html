@@ -1,0 +1,21 @@
+{% extends 'agency/base.html' %}
+{% block title %}{{ tour.title }} — TravelWorld{% endblock %}
+{% block content %}
+<h1>{{ tour.title }}</h1>
+<p><strong>Страна направления:</strong> {{ tour.country.name }}</p>
+<p><strong>Категория тура:</strong> {{ tour.category.name }}</p>
+<p><strong>Стоимость:</strong> {{ tour.price }} руб.</p>
+<p><strong>Длительность:</strong> {{ tour.duration_days }} дн.</p>
+<p><strong>Доступность:</strong> {% if tour.is_available %}Доступен к бронированию{% else %}Недоступен{% endif %}</p>
+<p><strong>Описание:</strong> {{ tour.description }}</p>
+
+{% if tour.photo %}
+    <img src="{{ tour.photo.url }}" alt="{{ tour.title }}" class="detail-img">
+{% endif %}
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'agency:tour_list' %}" class="btn btn-back">← Вернуться к списку туров</a>
+    <a href="{% url 'agency:tour_update' tour.pk %}" class="btn btn-edit">Редактировать</a>
+    <a href="{% url 'agency:tour_delete' tour.pk %}" class="btn btn-delete">Удалить</a>
+</div>
+{% endblock %}

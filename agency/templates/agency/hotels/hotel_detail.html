@@ -1,0 +1,18 @@
+{% extends 'agency/base.html' %}
+{% block title %}{{ hotel.name }} — TravelWorld{% endblock %}
+{% block content %}
+<h1>{{ hotel.name }} ({{ hotel.stars }}★)</h1>
+<p><strong>Страна:</strong> {{ hotel.country.name }}</p>
+<p><strong>Адрес:</strong> {{ hotel.address }}</p>
+<p><strong>Стоимость за ночь:</strong> {{ hotel.price_per_night }} руб.</p>
+
+{% if hotel.photo %}
+    <img src="{{ hotel.photo.url }}" alt="{{ hotel.name }}" class="detail-img">
+{% endif %}
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'agency:hotel_list' %}" class="btn btn-back">← Вернуться к списку отелей</a>
+    <a href="{% url 'agency:hotel_update' hotel.pk %}" class="btn btn-edit">Редактировать</a>
+    <a href="{% url 'agency:hotel_delete' hotel.pk %}" class="btn btn-delete">Удалить</a>
+</div>
+{% endblock %}

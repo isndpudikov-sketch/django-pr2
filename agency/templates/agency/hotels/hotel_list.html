@@ -1,0 +1,23 @@
+{% extends 'agency/base.html' %}
+{% block title %}Отели — TravelWorld{% endblock %}
+{% block content %}
+<h1>Отели-партнёры</h1>
+<a href="{% url 'agency:hotel_create' %}" class="btn btn-primary">+ Добавить отель</a>
+
+{% for hotel in hotels %}
+<div class="item-card">
+    <h3><a href="{% url 'agency:hotel_detail' hotel.pk %}">{{ hotel.name }} ({{ hotel.stars }}★)</a></h3>
+    <p><strong>Страна:</strong> {{ hotel.country.name }} | <strong>Цена за ночь:</strong> {{ hotel.price_per_night }} руб.</p>
+    {% if hotel.photo %}
+        <img src="{{ hotel.photo.url }}" alt="{{ hotel.name }}" class="thumb-img">
+    {% endif %}
+    <div>
+        <a href="{% url 'agency:hotel_detail' hotel.pk %}" class="btn btn-primary">Подробнее</a>
+        <a href="{% url 'agency:hotel_update' hotel.pk %}" class="btn btn-edit">Редактировать</a>
+        <a href="{% url 'agency:hotel_delete' hotel.pk %}" class="btn btn-delete">Удалить</a>
+    </div>
+</div>
+{% empty %}
+<p style="margin-top: 15px;">Отели пока не добавлены.</p>
+{% endfor %}
+{% endblock %}

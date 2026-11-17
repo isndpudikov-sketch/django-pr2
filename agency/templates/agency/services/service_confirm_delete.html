@@ -1,0 +1,10 @@
+{% extends 'agency/base.html' %}
+{% block title %}Удаление услуги{% endblock %}
+{% block content %}
+<h1>Удалить услугу «{{ service.name }}»?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-delete">Подтвердить удаление</button>
+    <a href="{% url 'agency:service_list' %}" class="btn btn-back">Вернуться к списку услуг</a>
+</form>
+{% endblock %}

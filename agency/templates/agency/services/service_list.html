@@ -1,0 +1,20 @@
+{% extends 'agency/base.html' %}
+{% block title %}Услуги — TravelWorld{% endblock %}
+{% block content %}
+<h1>Услуги представительства</h1>
+<a href="{% url 'agency:service_create' %}" class="btn btn-primary">+ Добавить услугу</a>
+
+{% for service in services %}
+<div class="item-card">
+    <h3><a href="{% url 'agency:service_detail' service.pk %}">{{ service.name }}</a></h3>
+    <p><strong>Стоимость:</strong> {{ service.price }} руб. | <strong>Срок:</strong> {{ service.processing_days }} дн.</p>
+    <div>
+        <a href="{% url 'agency:service_detail' service.pk %}" class="btn btn-primary">Подробнее</a>
+        <a href="{% url 'agency:service_update' service.pk %}" class="btn btn-edit">Редактировать</a>
+        <a href="{% url 'agency:service_delete' service.pk %}" class="btn btn-delete">Удалить</a>
+    </div>
+</div>
+{% empty %}
+<p style="margin-top: 15px;">Услуги пока не добавлены.</p>
+{% endfor %}
+{% endblock %}

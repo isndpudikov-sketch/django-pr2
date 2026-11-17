@@ -1,0 +1,10 @@
+{% extends 'agency/base.html' %}
+{% block title %}Удаление сотрудника{% endblock %}
+{% block content %}
+<h1>Удалить сотрудника «{{ employee.full_name }}»?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-delete">Подтвердить удаление</button>
+    <a href="{% url 'agency:employee_list' %}" class="btn btn-back">Вернуться к списку сотрудников</a>
+</form>
+{% endblock %}

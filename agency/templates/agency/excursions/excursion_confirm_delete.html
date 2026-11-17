@@ -1,0 +1,10 @@
+{% extends 'agency/base.html' %}
+{% block title %}Удаление экскурсии{% endblock %}
+{% block content %}
+<h1>Удалить экскурсию «{{ excursion.title }}»?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-delete">Подтвердить удаление</button>
+    <a href="{% url 'agency:excursion_list' %}" class="btn btn-back">Вернуться к списку экскурсий</a>
+</form>
+{% endblock %}

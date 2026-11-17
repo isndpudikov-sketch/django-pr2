@@ -1,0 +1,23 @@
+{% extends 'agency/base.html' %}
+{% block title %}Экскурсии — TravelWorld{% endblock %}
+{% block content %}
+<h1>Экскурсионные программы</h1>
+<a href="{% url 'agency:excursion_create' %}" class="btn btn-primary">+ Добавить экскурсию</a>
+
+{% for excursion in excursions %}
+<div class="item-card">
+    <h3><a href="{% url 'agency:excursion_detail' excursion.pk %}">{{ excursion.title }}</a></h3>
+    <p><strong>Длительность:</strong> {{ excursion.duration_hours }} ч. | <strong>Стоимость:</strong> {{ excursion.price }} руб.</p>
+    {% if excursion.photo %}
+        <img src="{{ excursion.photo.url }}" alt="{{ excursion.title }}" class="thumb-img">
+    {% endif %}
+    <div>
+        <a href="{% url 'agency:excursion_detail' excursion.pk %}" class="btn btn-primary">Подробнее</a>
+        <a href="{% url 'agency:excursion_update' excursion.pk %}" class="btn btn-edit">Редактировать</a>
+        <a href="{% url 'agency:excursion_delete' excursion.pk %}" class="btn btn-delete">Удалить</a>
+    </div>
+</div>
+{% empty %}
+<p style="margin-top: 15px;">Экскурсии пока не добавлены.</p>
+{% endfor %}
+{% endblock %}

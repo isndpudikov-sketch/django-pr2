@@ -1,0 +1,24 @@
+{% extends 'agency/base.html' %}
+{% block title %}Туры — TravelWorld{% endblock %}
+{% block content %}
+<h1>Каталог туров</h1>
+<a href="{% url 'agency:tour_create' %}" class="btn btn-primary">+ Добавить новый тур</a>
+
+{% for tour in tours %}
+<div class="item-card">
+    <h3><a href="{% url 'agency:tour_detail' tour.pk %}">{{ tour.title }}</a></h3>
+    <p><strong>Страна:</strong> {{ tour.country.name }} | <strong>Категория:</strong> {{ tour.category.name }}</p>
+    <p><strong>Стоимость:</strong> {{ tour.price }} руб. ({{ tour.duration_days }} дн.)</p>
+    {% if tour.photo %}
+        <img src="{{ tour.photo.url }}" alt="{{ tour.title }}" class="thumb-img">
+    {% endif %}
+    <div>
+        <a href="{% url 'agency:tour_detail' tour.pk %}" class="btn btn-primary">Подробнее</a>
+        <a href="{% url 'agency:tour_update' tour.pk %}" class="btn btn-edit">Редактировать</a>
+        <a href="{% url 'agency:tour_delete' tour.pk %}" class="btn btn-delete">Удалить</a>
+    </div>
+</div>
+{% empty %}
+<p style="margin-top: 15px;">Туры пока не добавлены.</p>
+{% endfor %}
+{% endblock %}

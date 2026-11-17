@@ -1,0 +1,15 @@
+{% extends 'agency/base.html' %}
+{% block title %}{{ service.name }} — TravelWorld{% endblock %}
+{% block content %}
+<h1>{{ service.name }}</h1>
+<p><strong>Стоимость:</strong> {{ service.price }} руб.</p>
+<p><strong>Срок оказания:</strong> {{ service.processing_days }} дн.</p>
+<p><strong>Статус:</strong> {% if service.is_active %}Активна{% else %}Приостановлена{% endif %}</p>
+<p><strong>Описание:</strong> {{ service.description }}</p>
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'agency:service_list' %}" class="btn btn-back">← Вернуться к списку услуг</a>
+    <a href="{% url 'agency:service_update' service.pk %}" class="btn btn-edit">Редактировать</a>
+    <a href="{% url 'agency:service_delete' service.pk %}" class="btn btn-delete">Удалить</a>
+</div>
+{% endblock %}

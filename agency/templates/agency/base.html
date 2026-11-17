@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{% static 'agency/css/style.css' %}">
 </head>
 <body>
-
     <header class="header">
         <nav class="nav">
             <a href="{% url 'agency:home' %}" class="logo">✈ TravelWorld</a>
@@ -19,22 +18,23 @@
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'agency:contacts' %}">Контакты</a></li>
                         <li><a href="{% url 'agency:location' %}">Как нас найти</a></li>
+                        <li><a href="{% url 'agency:employee_list' %}">Сотрудники</a></li>
                     </ul>
                 </li>
-                <li><a href="{% url 'agency:tours' %}">Туры и направления</a></li>
-                <li><a href="{% url 'agency:services' %}">Услуги</a></li>
+                <li><a href="{% url 'agency:tour_list' %}">Туры</a></li>
+                <li><a href="{% url 'agency:hotel_list' %}">Отели</a></li>
+                <li><a href="{% url 'agency:excursion_list' %}">Экскурсии</a></li>
+                <li><a href="{% url 'agency:service_list' %}">Услуги</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container">
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
 
     <footer class="footer">
         <p>&copy; 2026 Представительство туристической фирмы «TravelWorld». Все права защищены.</p>
     </footer>
-
 </body>
 </html>

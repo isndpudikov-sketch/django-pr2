@@ -1,0 +1,21 @@
+{% extends 'agency/base.html' %}
+{% block title %}{{ employee.full_name }} — TravelWorld{% endblock %}
+{% block content %}
+<h1>{{ employee.full_name }}</h1>
+<p><strong>Должность:</strong> {{ employee.position }}</p>
+<p><strong>Рабочий телефон:</strong> {{ employee.phone }}</p>
+<p><strong>Электронная почта:</strong> {{ employee.email }}</p>
+{% if employee.badge %}
+    <p><strong>Служебный пропуск:</strong> №{{ employee.badge.badge_number }} ({{ employee.badge.access_level }})</p>
+{% endif %}
+
+{% if employee.photo %}
+    <img src="{{ employee.photo.url }}" alt="{{ employee.full_name }}" class="detail-img">
+{% endif %}
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'agency:employee_list' %}" class="btn btn-back">← Вернуться к списку сотрудников</a>
+    <a href="{% url 'agency:employee_update' employee.pk %}" class="btn btn-edit">Редактировать</a>
+    <a href="{% url 'agency:employee_delete' employee.pk %}" class="btn btn-delete">Удалить</a>
+</div>
+{% endblock %}
